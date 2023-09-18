@@ -10,3 +10,21 @@
     color: black;
     border: 1px solid;
 }
+
+.options {
+    position: absolute;
+    z-index: inherit;
+    width: 17.9%;
+    border: 1px solid;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 10px 10px;
+}
+
+.option {
+    padding: 5px 15px;
+    overflow: hidden;
+}
+
+.option:hover {
+    background-color: #d8d8d8;
+}

@@ -28,6 +28,7 @@ export default function RootLayout({
                     </div>
                     <Footer />
                 </div>
+                <div id="drop-down" />
             </body>
         </html>
     )

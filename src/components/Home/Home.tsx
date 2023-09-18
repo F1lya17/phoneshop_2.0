@@ -1,5 +1,6 @@
 import { Phone } from "@/api/interfacesAoi";
 import PhoneCard from "../PhoneCard";
+import SortPhonesContainer from "../SortPhones/SortPhonesContainer";
 
 type HomePropsType = {
     phones: Phone[]
@@ -7,13 +8,16 @@ type HomePropsType = {
 
 const Home: React.FC<HomePropsType> = ({ phones }) => {
     return (
-        <div className="phone-container">
-            {phones.map(phone => {
-                return (
-                    <PhoneCard key={phone.id} phone={phone} />
-                );
-            })}
-        </div>
+        <>
+            <SortPhonesContainer />
+            <div className="phone-container">
+                {phones.map(phone => {
+                    return (
+                        <PhoneCard key={phone.id} phone={phone} />
+                    );
+                })}
+            </div>
+        </>
     );
 }
 

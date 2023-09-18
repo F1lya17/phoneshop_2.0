@@ -13,3 +13,8 @@ export interface Phone {
     image: string
 };
 
+export interface Brand {
+    id: string,
+    name: string
+};
+
