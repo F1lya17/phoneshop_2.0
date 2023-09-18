@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import './globals.scss'
 import type { Metadata } from 'next'
@@ -18,8 +19,15 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Header />
-                {children}
+                <div className="wrapper">
+                    <Header />
+                    <div className="main">
+                        <div className="container">
+                            {children}
+                        </div>
+                    </div>
+                    <Footer />
+                </div>
             </body>
         </html>
     )

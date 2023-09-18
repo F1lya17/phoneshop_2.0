@@ -3,12 +3,13 @@ import classes from "./UI.module.css"
 
 type ButtonPropsType = {
     children: string,
-    onClick?: any
+    onClick?: () => void,
+    transparent?: boolean
 }
 
-const Button: React.FC<ButtonPropsType> = ({ children, ...props }) => {
+const Button: React.FC<ButtonPropsType> = ({ children, transparent, ...props }) => {
     return (
-        <button {...props} className={classes.button}>
+        <button {...props} className={transparent ? [classes.button, classes.buttonTransparent].join(' ') : classes.button}>
             {children}
         </button>
     );

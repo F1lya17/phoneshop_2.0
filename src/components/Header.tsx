@@ -14,7 +14,7 @@ const Header = () => {
             <div className="container">
                 <div className="header__container">
                     <Link href="/" className="header__logo">F1lyaPhoneShop</Link>
-                    <Image alt='корзина' src={basket} />
+                    <Link href="/basket"><Image alt='корзина' src={basket} /></Link>
                     <Button onClick={() => router.push('/admin')} >Админ панель</Button>
                     <Button onClick={() => router.push('/login')}>Выйти</Button>
                 </div>
