@@ -1,3 +1,4 @@
+import { StoreProvider } from '@/store/StoreProvider'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import './globals.scss'
@@ -20,13 +21,15 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <div className="wrapper">
-                    <Header />
-                    <div className="main">
-                        <div className="container">
-                            {children}
+                    <StoreProvider>
+                        <Header />
+                        <div className="main">
+                            <div className="container">
+                                {children}
+                            </div>
                         </div>
-                    </div>
-                    <Footer />
+                        <Footer />
+                    </StoreProvider>
                 </div>
                 <div id="drop-down" />
             </body>

@@ -182,7 +182,23 @@ button::-moz-focus-inner {
     padding: 8px 10px;
     display: flex;
     justify-content: space-between;
+    &__placeholder {
+        color: gray;
+    }
 }
 
+.rotated-img {
+    transform: rotate(180deg);
+    transition: all .3s;
+}
+
+.normal-img {
+    transition: all .3s;
+}
+
+.price {
+    margin-bottom: 5px;
+    display: block;
+}
 
 
