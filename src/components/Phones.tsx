@@ -11,10 +11,7 @@ type PhonesPropsType = {
 }
 
 const Phones: React.FC<PhonesPropsType> = function ({ phones }) {
-    const { from } = useAppSelector(state => state.filter);
-    const { to } = useAppSelector(state => state.filter);
-    const { brand } = useAppSelector(state => state.filter);
-
+    const { to, from, brand } = useAppSelector(state => state.filter);
     const filteredPhones = useFilter(phones, brand, to, from);
 
     return (

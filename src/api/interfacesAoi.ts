@@ -18,3 +18,6 @@ export interface Brand {
     name: string
 };
 
+export interface BasketPhone extends Phone {
+    count: number
+}

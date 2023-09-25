@@ -1,15 +1,15 @@
-import React, { ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import classes from "./UI.module.css"
 
 type ButtonPropsType = {
     children: string,
-    onClick?: () => void,
+    onClick?: MouseEventHandler<HTMLButtonElement>,
     transparent?: boolean
 }
 
-const Button: React.FC<ButtonPropsType> = ({ children, transparent, ...props }) => {
+const Button: React.FC<ButtonPropsType> = ({ children, transparent, onClick }) => {
     return (
-        <button {...props} className={transparent ? [classes.button, classes.buttonTransparent].join(' ') : classes.button}>
+        <button onClick={onClick ? onClick : () => { }} className={transparent ? [classes.button, classes.buttonTransparent].join(' ') : classes.button}>
             {children}
         </button>
     );
