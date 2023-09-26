@@ -2,6 +2,8 @@
 
 import Button from "@/components/UI/Button";
 import Input from "@/components/UI/Input";
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import { userReducer } from "@/store/reducers/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,9 +13,14 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const clickButton = (e: React.MouseEvent): void => {
+    const dispatch = useAppDispatch();
+    const { setUser } = userReducer.actions;
+
+    const login = (e: React.MouseEvent) => {
         e.preventDefault();
-        router.push('/')
+        localStorage.setItem('auth', 'true');
+        dispatch(setUser(email));
+        router.push('/');
     }
 
     return (
@@ -29,7 +36,7 @@ export default function Login() {
                     <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <p className="login__link">Нет аккаунта? <Link href="/registration">Зарегиструйтесь</Link></p>
-                <Button onClick={clickButton}>Войти</Button>
+                <Button onClick={login}>Войти</Button>
             </form>
         </div>
     );
