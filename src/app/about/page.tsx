@@ -1,5 +1,5 @@
 export default function About() {
     return (
-        <h1>Учебный сайт с магазином телефонов</h1>
+        <div className="about">Учебный сайт с магазином телефонов</div>
     );
 }

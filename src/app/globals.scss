@@ -323,3 +323,39 @@ button::-moz-focus-inner {
     grid-column-start: 2;
 }
 
+.about {
+    grid-column-start: 2;
+    font-size: 25px;
+    padding: 20px 0;
+}
+
+.login {
+    grid-column-start: 2;
+    margin: 0 auto;
+    &__form {
+        margin-top: 50px;
+        padding: 30px 25px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        min-width: 700px;
+    }
+    &__title {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    &__email-label {
+        margin-bottom: 8px;
+    }
+    &__password-label {
+        margin-bottom: 8px;
+    }
+    &__link {
+        margin-bottom: 20px;
+    }
+}
+
+.input-label {
+    font-size: 18px;
+}
+
+
