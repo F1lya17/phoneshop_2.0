@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import filter from "./reducers/filter"
 import basket from "./reducers/basket"
 import user from "./reducers/user"
+import phones from "./reducers/phones"
 
 const rootReducer = combineReducers({
     filter,
     basket,
-    user
+    user,
+    phones
 })
 
 

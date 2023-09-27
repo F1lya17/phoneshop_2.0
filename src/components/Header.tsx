@@ -7,6 +7,7 @@ import Button from "./UI/Button";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks/reduxHooks";
 import { userReducer } from "@/store/reducers/user";
+import { useEffect } from "react";
 
 
 const Header = () => {
@@ -14,7 +15,7 @@ const Header = () => {
     const { totalCount } = useAppSelector(state => state.basket);
     const { isAuth } = useAppSelector(state => state.user);
     const dispatch = useAppDispatch();
-    const { logout } = userReducer.actions;
+    const { logout, setUser } = userReducer.actions;
 
     const outLogin = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -24,6 +25,13 @@ const Header = () => {
             router.push('/login');
         }
     }
+
+    useEffect(() => {
+        const email = localStorage.getItem('auth');
+        if (email) {
+            dispatch(setUser(email));
+        }
+    }, [])
 
     return (
         <header className="header">

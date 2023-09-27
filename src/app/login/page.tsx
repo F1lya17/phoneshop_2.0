@@ -18,7 +18,7 @@ export default function Login() {
 
     const login = (e: React.MouseEvent) => {
         e.preventDefault();
-        localStorage.setItem('auth', 'true');
+        localStorage.setItem('auth', email);
         dispatch(setUser(email));
         router.push('/');
     }

@@ -1,3 +1,4 @@
+import PhonePageContainer from "@/components/Phone/PhonePageContainer";
 import React, { useEffect, useState } from "react";
 
 interface PhonePageProps {
@@ -5,9 +6,7 @@ interface PhonePageProps {
 }
 
 const PhonePage: React.FC<PhonePageProps> = function ({ params }) {
-    return <div className="phone-page">
-        {params.id}
-    </div>
+    return <PhonePageContainer id={params.id} />
 }
 
 export default PhonePage;
