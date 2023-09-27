@@ -1,20 +1,21 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import filter from "./reducers/filter"
 import basket from "./reducers/basket"
 import user from "./reducers/user"
-import phones from "./reducers/phones"
+import { reviewAPI } from "@/components/services/ReviewService";
 
 const rootReducer = combineReducers({
     filter,
     basket,
     user,
-    phones
+    [reviewAPI.reducerPath]: reviewAPI.reducer
 })
 
 
 export const setupStore = () => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(reviewAPI.middleware)
     })
 }
 

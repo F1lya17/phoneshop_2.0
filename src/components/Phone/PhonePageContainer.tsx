@@ -13,7 +13,7 @@ type PhonePageContainerPropsType = {
 
 const PhonePageContainer: React.FC<PhonePageContainerPropsType> = async ({ id }) => {
     const phone: Phone = await getPhone(id);
-    return <PhonePage phone={phone} />
+    return <PhonePage id={id} phone={phone} />
 }
 
 export default PhonePageContainer;

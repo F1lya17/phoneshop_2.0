@@ -3,17 +3,20 @@
 import Image from "next/image";
 import React from "react";
 import Button from "../UI/Button";
-import { Phone } from "@/api/interfacesAoi";
+import { Phone, Review } from "@/api/interfacesAoi";
 import { basketReducer } from "@/store/reducers/basket";
 import { useAppDispatch } from "@/hooks/reduxHooks";
+import { reviewAPI } from "../services/ReviewService";
 
 type PhonePagePropsType = {
-    phone: Phone
+    phone: Phone,
+    id: string
 }
 
-const PhonePage: React.FC<PhonePagePropsType> = function ({ phone }) {
+const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
     const { addPhone } = basketReducer.actions;
     const dispatch = useAppDispatch();
+    const { data: reviews } = reviewAPI.useFetchReviewsQuery(id);
 
     return <div className="phone-page">
         <div className="phone-page__name">{phone!.name}</div>
