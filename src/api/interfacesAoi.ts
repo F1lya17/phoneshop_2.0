@@ -3,7 +3,7 @@ type featuresArrayType = {
     description: string
 }
 
-type reviewDataType = {
+export type reviewDataType = {
     email: string,
     rating: number,
     text: string,

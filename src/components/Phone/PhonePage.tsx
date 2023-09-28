@@ -3,10 +3,11 @@
 import Image from "next/image";
 import React from "react";
 import Button from "../UI/Button";
-import { Phone, Review } from "@/api/interfacesAoi";
+import { Phone } from "@/api/interfacesAoi";
 import { basketReducer } from "@/store/reducers/basket";
 import { useAppDispatch } from "@/hooks/reduxHooks";
 import { reviewAPI } from "../services/ReviewService";
+import Review from "../Review";
 
 type PhonePagePropsType = {
     phone: Phone,
@@ -33,6 +34,12 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
                     </div>
                 )}
             </div>
+        </div>
+        <h2 className="phone-page__otzyv">Отзывы:</h2>
+        <div className="phone-page__reviews">
+            {reviews?.data.map(el =>
+                <Review key={el.date} review={el} />
+            )}
         </div>
     </div>
 }
