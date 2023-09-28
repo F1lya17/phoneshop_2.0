@@ -8,6 +8,7 @@ import { basketReducer } from "@/store/reducers/basket";
 import { useAppDispatch } from "@/hooks/reduxHooks";
 import { reviewAPI } from "../services/ReviewService";
 import Review from "../Review";
+import star from "../../../public/star.png"
 
 type PhonePagePropsType = {
     phone: Phone,
@@ -20,10 +21,16 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
     const { data: reviews } = reviewAPI.useFetchReviewsQuery(id);
 
     return <div className="phone-page">
-        <div className="phone-page__name">{phone!.name}</div>
+        <div className="phone-page__main">
+            <div className="phone-page__name">{phone.name}</div>
+            <div className="phone-page__rating">
+                {phone.rating}
+                <Image width={40} height={40} src={star} alt="star" />
+            </div>
+        </div>
         <div className="phone-page__info">
             <div className="phone-page__img">
-                <Image width={200} height={500} alt="phone" src={phone!.image} />
+                <Image width={200} height={500} alt="phone" src={phone.image} />
                 <Button onClick={() => dispatch(addPhone(phone))}>Добавить в корзину</Button>
             </div>
             <div className="phone-page__description">
@@ -35,12 +42,18 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
                 )}
             </div>
         </div>
-        <h2 className="phone-page__otzyv">Отзывы:</h2>
-        <div className="phone-page__reviews">
-            {reviews?.data.map(el =>
-                <Review key={el.date} review={el} />
-            )}
-        </div>
+        {reviews && reviews?.data.length > 0 ?
+            <>
+                <h2 className="phone-page__otzyv">Отзывы:</h2>
+                <div className="phone-page__reviews">
+                    {reviews?.data.map(el =>
+                        <Review key={el.date} review={el} />
+                    )}
+                </div>
+            </>
+            :
+            <></>
+        }
     </div>
 }
 

@@ -360,6 +360,15 @@ button::-moz-focus-inner {
 
 .phone-page {
     padding: 30px 0;
+    &__main {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__rating {
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+    }
     &__info {
         display: flex;
         margin-bottom: 30px;
@@ -400,8 +409,13 @@ button::-moz-focus-inner {
     margin-bottom: 20px;
     gap: 20px;
     &__img {
+        background-color: lightblue;
         border-radius: 50%;
-        flex: 0 0 5%;
+        flex: 0 0 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
     }
     &__info {
         flex: 1 1 auto;
@@ -410,11 +424,18 @@ button::-moz-focus-inner {
         text-decoration: wavy;
         color: gray;
         font-size: 14px;
-        margin-bottom: 5px;
     }
     &__text {
         line-height: 25px;
         font-size: 18px;
+        margin-bottom: 5px;
+    }
+    &__rating {
+        margin-bottom: 5px;
+    }
+    &__date {
+        color: gray;
+        font-size: 12px;
     }
 }
 
