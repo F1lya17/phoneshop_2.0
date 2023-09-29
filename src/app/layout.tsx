@@ -32,6 +32,7 @@ export default function RootLayout({
                     </StoreProvider>
                 </div>
                 <div id="drop-down" />
+                <div id="modal" />
             </body>
         </html>
     )

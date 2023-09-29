@@ -4,7 +4,7 @@ import classes from "./UI.module.css"
 type InputPropsType = {
     placeholder?: string,
     type?: string,
-    value: string,
+    value: string | undefined,
     onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 

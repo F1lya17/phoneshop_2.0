@@ -10,6 +10,13 @@ export type reviewDataType = {
     date: string
 }
 
+export type newPhoneType = {
+    name: string,
+    price: string,
+    image: string,
+    brand: string
+}
+
 export interface Phone {
     id: string,
     name: string,

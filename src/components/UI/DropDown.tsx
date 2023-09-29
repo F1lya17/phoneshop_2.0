@@ -14,7 +14,7 @@ type PortalPropsType = {
     setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const Portal: React.FC<PortalPropsType> = function ({ selector, options, open, coord, setSelected, setOpen }) {
+const DropDown: React.FC<PortalPropsType> = function ({ selector, options, open, coord, setSelected, setOpen }) {
     const [mounted, setMounted] = useState(false);
     useEffect(() => {
         setMounted(true);
@@ -36,4 +36,4 @@ const Portal: React.FC<PortalPropsType> = function ({ selector, options, open, c
         document.querySelector(selector)!) : null
 }
 
-export default Portal;
+export default DropDown;

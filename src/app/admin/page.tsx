@@ -1,5 +1,5 @@
+import AdminPage from "@/components/AdminPage";
+
 export default function Admin() {
-    return (
-        <h1>Админ панель</h1>
-    );
+    return <AdminPage />
 }

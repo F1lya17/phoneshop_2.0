@@ -25,8 +25,8 @@ const SortPhones: React.FC<SortPhonesPropsType> = ({ brands }) => {
     const { setBrand } = filterReducer.actions;
     const dispatch = useAppDispatch();
 
-    const [fromValue, setFromValue] = useState('');
-    const [toValue, setToValue] = useState('');
+    const [fromValue, setFromValue] = useState<string>('');
+    const [toValue, setToValue] = useState<string>('');
 
     const debouncedChangeFrom = useDebounce((s) => dispatch(setFrom(s)), 750);
     const debouncedChangeTo = useDebounce((s) => dispatch(setTo(s)), 750);
@@ -68,9 +68,9 @@ const SortPhones: React.FC<SortPhonesPropsType> = ({ brands }) => {
             <h2 className="sortphones__title">Цена</h2>
             <div className="sortphones__price">
                 <h3 className="price">От</h3>
-                <Input value={fromValue} onChange={onChangeFromValue} type='number' />
+                <Input placeholder="0" value={fromValue} onChange={onChangeFromValue} type='number' />
                 <h3 className="price">До</h3>
-                <Input value={toValue} onChange={onChangeToValue} type='number' />
+                <Input placeholder="200000" value={toValue} onChange={onChangeToValue} type='number' />
             </div>
         </div>
     );

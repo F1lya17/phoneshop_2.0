@@ -48,3 +48,22 @@
     border-radius: 5px;
     width: 100%;
 }
+
+.modal_background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_card {
+    border-radius: 8px;
+    background: var(--white, #FFF);
+    padding: 24px;
+}
