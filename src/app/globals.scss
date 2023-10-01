@@ -468,3 +468,46 @@ button::-moz-focus-inner {
     align-items: center;
     gap: 10px;  
 }
+
+.stars {
+    display: flex;
+    &__star {
+        font-size: 40px;
+        color: gray;
+        cursor: pointer;
+    }
+    &__star-filled {
+        color: rgb(255, 255, 0);
+        font-size: 40px;
+        cursor: pointer;
+    }
+}
+
+.new-review {
+    &__title {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    &__rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    &__text {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    &__input {
+        border: 1px solid gray;
+        padding: 7px 15px;
+        min-height: 70px;
+        border-radius: 15px;
+        flex: 1 1 auto;
+    }
+    &__rating-title {
+        flex: 0 0 220px;
+        font-size: 16px;
+    }
+}

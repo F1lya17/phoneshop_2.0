@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../UI/Button";
 import { Phone } from "@/api/interfacesAoi";
 import { basketReducer } from "@/store/reducers/basket";
@@ -9,6 +9,7 @@ import { useAppDispatch } from "@/hooks/reduxHooks";
 import { reviewAPI } from "../../services/ReviewService";
 import Review from "../Review";
 import star from "../../../public/star.png"
+import NewReview from "../NewReview";
 
 type PhonePagePropsType = {
     phone: Phone,
@@ -19,6 +20,7 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
     const { addPhone } = basketReducer.actions;
     const dispatch = useAppDispatch();
     const { data: reviews } = reviewAPI.useFetchReviewsQuery(id);
+
 
     return <div className="phone-page">
         <div className="phone-page__main">
@@ -44,7 +46,7 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
         </div>
         {reviews && reviews?.data.length > 0 ?
             <>
-                <h2 className="phone-page__otzyv">Отзывы:</h2>
+                <h2 className="phone-page__title">Отзывы:</h2>
                 <div className="phone-page__reviews">
                     {reviews?.data.map(el =>
                         <Review key={el.date} review={el} />
@@ -54,7 +56,8 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
             :
             <></>
         }
-    </div>
+        <NewReview reviews={reviews?.data} id={id} />
+    </div >
 }
 
 export default PhonePage;
