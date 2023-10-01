@@ -449,6 +449,7 @@ button::-moz-focus-inner {
 }
 
 .add-brand {
+    width: 667px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -460,4 +461,10 @@ button::-moz-focus-inner {
         font-size: 18px;
         font-weight: 500;
     }
+}
+
+.property {
+    display: flex;
+    align-items: center;
+    gap: 10px;  
 }

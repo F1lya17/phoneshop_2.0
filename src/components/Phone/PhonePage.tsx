@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import { Phone } from "@/api/interfacesAoi";
 import { basketReducer } from "@/store/reducers/basket";
 import { useAppDispatch } from "@/hooks/reduxHooks";
-import { reviewAPI } from "../services/ReviewService";
+import { reviewAPI } from "../../services/ReviewService";
 import Review from "../Review";
 import star from "../../../public/star.png"
 

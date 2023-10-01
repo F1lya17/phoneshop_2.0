@@ -14,6 +14,22 @@ const AdminPage = function () {
     const [brandName, setBrandName] = useState('');
     const [openPhone, setOpenPhone] = useState(false);
 
+    const handleClose = () => {
+        setBrandName('');
+        setOpenBrand(false);
+    }
+
+    const addBrand = () => {
+        fetch('https://643fbf08b9e6d064befd5c54.mockapi.io/api/devices/brands', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({ id: Date.now(), name: brandName })
+        });
+        handleClose();
+    }
+
     return <div className="admin">
         <Button onClick={() => setOpenBrand(true)}>Добавить бренд</Button>
         <Button onClick={() => setOpenPhone(true)}>Добавить телефон</Button>
@@ -28,7 +44,7 @@ const AdminPage = function () {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBrandName(e.target.value)}
                     placeholder="Введите название бренда"
                 />
-                <Button>Добавить</Button>
+                <Button onClick={addBrand}>Добавить</Button>
             </div>
         </Modal>
         <Modal selector="#modal" open={openPhone} setOpen={setOpenPhone}>

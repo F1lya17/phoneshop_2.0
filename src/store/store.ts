@@ -2,7 +2,7 @@ import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/
 import filter from "./reducers/filter"
 import basket from "./reducers/basket"
 import user from "./reducers/user"
-import { reviewAPI } from "@/components/services/ReviewService";
+import { reviewAPI } from "@/services/ReviewService";
 
 const rootReducer = combineReducers({
     filter,
