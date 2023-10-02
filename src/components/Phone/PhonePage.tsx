@@ -56,7 +56,7 @@ const PhonePage: React.FC<PhonePagePropsType> = function ({ phone, id }) {
             :
             <></>
         }
-        <NewReview reviews={reviews?.data} id={id} />
+        <NewReview reviews={reviews?.data ? reviews.data : []} id={id} />
     </div >
 }
 

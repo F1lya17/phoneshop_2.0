@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Input from "./UI/Input";
 import Button from "./UI/Button";
 import { Review } from "@/api/interfacesAoi";
 import { useAppSelector } from "@/hooks/reduxHooks";
+import { reviewAPI } from "@/services/ReviewService";
 
 type NewReviewPropsType = {
     id: string,
@@ -15,20 +15,12 @@ const NewReview: React.FC<NewReviewPropsType> = function ({ id, reviews }) {
     const [stars, setStars] = useState([1, 2, 3, 4, 5]);
     const [reviewText, setReviewText] = useState('');
     const { email } = useAppSelector(state => state.user);
+    const [addReview] = reviewAPI.useAddReviewMutation();
 
-    const starClick = (value: number) => {
-        setRating(value);
-        setSelectedStar(value);
-    }
-
-    const addReview = (e: React.MouseEvent) => {
+    const handleAddReview = async (e: React.MouseEvent) => {
         e.preventDefault();
-        fetch(`https://6502dd6aa0f2c1f3faeb0054.mockapi.io/api/reviews/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
+        if (reviewText) {
+            await addReview({
                 id: id,
                 data: [...reviews, {
                     email: email ? email : "anonimus",
@@ -36,10 +28,37 @@ const NewReview: React.FC<NewReviewPropsType> = function ({ id, reviews }) {
                     rating: selectedStar,
                     date: new Date().toLocaleString('ru-RU')
                 }]
-            })
-        });
-        setReviewText('');
+            }).unwrap();
+            setReviewText('');
+            setSelectedStar(0);
+            setRating(0);
+        }
     }
+
+    const starClick = (value: number) => {
+        setRating(value);
+        setSelectedStar(value);
+    }
+
+    // const addReview = (e: React.MouseEvent) => {
+    //     e.preventDefault();
+    //     fetch(`https://6502dd6aa0f2c1f3faeb0054.mockapi.io/api/reviews/${id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json;charset=utf-8'
+    //         },
+    //         body: JSON.stringify({
+    //             id: id,
+    //             data: [...reviews, {
+    //                 email: email ? email : "anonimus",
+    //                 text: reviewText,
+    //                 rating: selectedStar,
+    //                 date: new Date().toLocaleString('ru-RU')
+    //             }]
+    //         })
+    //     });
+    //     setReviewText('');
+    // }
 
     return (
         <div className="new-review">
@@ -72,7 +91,7 @@ const NewReview: React.FC<NewReviewPropsType> = function ({ id, reviews }) {
                         placeholder="Расскажите свои впечатления"
                     />
                 </div>
-                <Button onClick={addReview}>Отправить</Button>
+                <Button onClick={handleAddReview}>Отправить</Button>
             </form>
         </div>
     );
